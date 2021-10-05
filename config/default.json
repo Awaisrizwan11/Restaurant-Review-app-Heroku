@@ -1,4 +1,5 @@
 {
   "jwtPrivateKey": "mykey",
-  "db":"mongodb://localhost/Restaurantappdb"
+  
+  "db":"Restaurantappdb_db"
 }
