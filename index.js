@@ -7,7 +7,7 @@ const upload = require('express-fileupload')
 require('./protection')(app)
 require('express-async-errors')
 require('winston-mongodb')
-let port =process.env.port || 27017
+let port =process.env.PORT || 27017
 
 //////////////////////////////////////// FOR USERS Admin account ////////////////////////////////////
 
