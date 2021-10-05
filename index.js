@@ -71,7 +71,7 @@ app.use('/api/upload',postimg)
 app.use('/api/getimg',getimg)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect('mongodb://localhost/Restaurantappdb', {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Restaurantappdb', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -85,7 +85,7 @@ winston.add(new winston.transports.File({
     filename: 'logfile.log'
 }))
 winston.add(new winston.transports.MongoDB({
-    db: 'mongodb://localhost/logindb'
+    db: process.env.MONGODB_URL ||'mongodb://localhost/logindb'
 }))
 
 
