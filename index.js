@@ -9,7 +9,7 @@ require('express-async-errors')
 require('winston-mongodb')
 //let port =process.env.PORT || 27017
 // 127.0.0.1:27017
-var server_port = process.env.YOUR_PORT || process.env.PORT || 9000;
+var server_port = process.env.YOUR_PORT || process.env.PORT || 27017;
 //var server_host = process.env.YOUR_HOST || '127.0.0.1:27017';
 
 //////////////////////////////////////// FOR USERS Admin account ////////////////////////////////////
