@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const {User} = require('../../models/register');
+const {User} = require('../../models/UserSchema');
 const auth = require('../../middleware/auth');
 const admin = require('../../middleware/admin');
 const express = require('express');

@@ -18,6 +18,7 @@ email: {
     required: true,
     minlength: 5,
     maxlength: 255,
+    
     unique: true
 },
 password: {
@@ -36,13 +37,13 @@ phone_number: {
 isAdmin: Boolean,
         isBusiness : Boolean
 })
+ 
 
 
-
-userSchema.methods.generateAuthToken = function() { 
-    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin,  isBusiness :this.isBusiness }, config.get('jwtPrivateKey'));
-    return token;
-  }
+// userSchema.methods.generateAuthToken = function() { 
+//     const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin,  isBusiness :this.isBusiness }, config.get('jwtPrivateKey'));
+//     return token;
+//   }
 
 const User = mongoose.model('User', userSchema);
 

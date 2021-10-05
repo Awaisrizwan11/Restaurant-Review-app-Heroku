@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const admin = require('../../middleware/admin');
-const {User} = require('../../models/register');
+const {User} = require('../../models/UserSchema');
 
 
 router.delete('/:id', [auth, admin], async (req, res) => {

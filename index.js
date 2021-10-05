@@ -2,30 +2,71 @@ const winston = require('winston')
 const mongoose = require('mongoose')
 const express = require('express');
 const app = express();
-const auth = require('./routes/auth');
-const users1 = require('./routes/users1');
-const admin_get = require('./routes/admin/get');
-const admin_del = require('./routes/admin/del');
-const admin_post = require('./routes/admin/post');
-const admin_put = require('./routes/admin/put');
-const Business_post = require('./routes/business/post');
-const Business_put = require('./routes/business/put');
-const User = require('./models/register')
+var cors = require('cors')
+const upload = require('express-fileupload')
 require('./protection')(app)
 require('express-async-errors')
 require('winston-mongodb')
 
+
+//////////////////////////////////////// FOR USERS Admin account ////////////////////////////////////
+
+const admin_get = require('./routes/admin/Admin_get');
+const admin_del = require('./routes/admin/Admin_delete');
+const admin_post = require('./routes/admin/Admin_post');
+const admin_put = require('./routes/admin/Admin_put');
+
+//////////////////////////////////////// FOR USERS Business account ////////////////////////////////
+
+const Business_post = require('./routes/business/Business_post');
+const Business_put = require('./routes/business/Business_put');
+
+//////////////////////////////////////// FOR LOGIN-REGISTER //////////////////////////////////////// 
+
+const Register = require('./routes/register_user')
+const Login = require('./routes/login_user')
+
+//////////////////////////////////////// FOR POSTS ///////////////////////////////////// ////////////
+
+const addpost = require('./routes/posts-routes/Addpost')
+const getpost = require('./routes/posts-routes/getpost')
+
+//////////////////////////////////////// FOR POSTS images///////////////////////////////////// ////////////
+const postimg = require('./routes/posts-routes/restaurant_img/postimg')
+const getimg = require('./routes/posts-routes/restaurant_img/getimg')
+
+
+
+app.use(upload())
+app.use(cors())
 app.use(express.json())
-app.use('/api/auth', auth);
-app.use('/api/users', users1);
+
+//////////////////////////////////////// FOR Admin USERS Routes ////////////////////////////////// 
+
 app.use('/api/get', admin_get);
 app.use('/api/del', admin_del);
 app.use('/api/post', admin_post);
 app.use('/api/put', admin_put);
+
+//////////////////////////////////////// FOR Business USERS Routes /////////////////////////////////
+
 app.use('/api/business_post', Business_post);
 app.use('/api/business_put', Business_put);
 
+//////////////////////////////////////// FOR Login/Registation Routes //////////////////////////////
 
+app.use('/api/register',Register );
+app.use('/api/login',Login );
+
+//////////////////////////////////////// FOR POSTS Routes //////////////////////////////////////////
+
+app.use('/api/addpost', addpost);
+app.use('/api/getpost', getpost);
+
+
+app.use('/api/upload',postimg)
+app.use('/api/getimg',getimg)
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 mongoose.connect('mongodb://localhost/Restaurantappdb', {
     useNewUrlParser: true,
@@ -43,6 +84,7 @@ winston.add(new winston.transports.File({
 winston.add(new winston.transports.MongoDB({
     db: 'mongodb://localhost/logindb'
 }))
+
 
 
 app.listen(9000, () => {
