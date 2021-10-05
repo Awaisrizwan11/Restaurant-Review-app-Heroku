@@ -7,7 +7,7 @@ const upload = require('express-fileupload')
 require('./protection')(app)
 require('express-async-errors')
 require('winston-mongodb')
-let port =process.env.PORT || 27017
+//let port =process.env.PORT || 27017
 
 //////////////////////////////////////// FOR USERS Admin account ////////////////////////////////////
 
@@ -87,6 +87,6 @@ winston.add(new winston.transports.MongoDB({
 
 
 
-app.listen(port, () => {
-    console.log(`running on ${port}` )
+app.listen(process.env.PORT || 27017, () => {
+    console.log(`running on 27017` )
 });
