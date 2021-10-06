@@ -75,8 +75,8 @@ app.use('/api/getimg',getimg)
 app.use('/api/check',check)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Restaurantappdb', {
-    
+mongoose.connect("mongodb+srv://admin:Awais_rizwan11@cluster0.kop1t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"   , {
+    //process.env.MONGODB_URI' || 'mongodb://localhost/Restaurantappdb'
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
