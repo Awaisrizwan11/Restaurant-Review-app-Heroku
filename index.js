@@ -38,7 +38,7 @@ const getpost = require('./routes/posts-routes/getpost')
 const postimg = require('./routes/posts-routes/restaurant_img/postimg')
 const getimg = require('./routes/posts-routes/restaurant_img/getimg')
 
-
+const check = require('./routes/check')
 
 app.use(upload())
 app.use(cors())
@@ -69,6 +69,9 @@ app.use('/api/getpost', getpost);
 
 app.use('/api/upload',postimg)
 app.use('/api/getimg',getimg)
+
+
+app.use('/api/check',check)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Restaurantappdb', {
