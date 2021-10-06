@@ -7,7 +7,8 @@ const upload = require('express-fileupload')
 require('./protection')(app)
 require('express-async-errors')
 require('winston-mongodb')
-let port =process.env.PORT || 9000
+let port =process.env.PORT || 27017
+//let port =process.env.PORT
 // 127.0.0.1:27017
 //var server_port = process.env.YOUR_PORT || process.env.PORT || 27017;
 //var server_host = process.env.YOUR_HOST || '127.0.0.1:27017';
@@ -74,7 +75,8 @@ app.use('/api/getimg',getimg)
 app.use('/api/check',check)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/Restaurantappdb', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Restaurantappdb', {
+    
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -88,7 +90,9 @@ winston.add(new winston.transports.File({
     filename: 'logfile.log'
 }))
 winston.add(new winston.transports.MongoDB({
-    db: process.env.MONGODB_URL ||'mongodb://localhost/logindb'
+    db: process.env.MONGODB_URL 
+    ||'mongodb://localhost/logindb'
+
 }))
 
 

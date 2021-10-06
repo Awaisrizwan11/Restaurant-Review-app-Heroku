@@ -1,4 +1,14 @@
 {
   "jwtPrivateKey": "mykey",
-  "db":"mongodb://localhost/Restaurantappdb"
+  "db":"mongodb://localhost/Restaurantappdb",
+
+
+  "test": {
+      "PORT": 9000,
+      "MONGODB_URI": "mongodb://localhost:27017"
+  },
+  "development": {
+      "PORT": 9000,
+      "MONGODB_URI": "mongodb://localhost:27017"
+  }
 }

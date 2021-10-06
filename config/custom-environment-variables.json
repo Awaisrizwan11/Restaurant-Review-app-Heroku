@@ -1,4 +1,5 @@
 {
   "jwtPrivateKey": "app_jwtPrivateKey",
   "db":"Restaurantappdb_db"
+  
 }

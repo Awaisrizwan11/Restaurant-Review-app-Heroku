@@ -5,7 +5,7 @@ const {User} = require('../models/UserSchema');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-//const config = require('config');
+const config = require('config');
 
 router.post('/', async (req, res) => {
   const {
